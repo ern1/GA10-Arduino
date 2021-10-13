@@ -1,11 +1,10 @@
 #define FASTLED_INTERNAL
 #include <FastLED.h>
-//#include <SoftwareSerial.h>
 
-// colors (fast kan säkert använda macron som redan finns i FastLED.h...)
-#define GREEN 255, 0, 0
-#define YELLOW 255, 128, 0
-#define RED 0, 255, 0
+// Colors
+#define GREEN 128, 0, 0    // CRGB::Green
+#define YELLOW 255, 165, 0 // CRGB::Orange
+#define RED 0, 255, 0      // CRGB::Red
 
 #define NUM_LEDS 11
 #define LED_PIN 3
@@ -25,9 +24,7 @@ int ledBrightness = 255;
 // switch and shut off timer
 int sensorReading = 0;
 int timerOn = TIME_ON;
-int lastTime = 0;
-
-SoftwareSerial mySerial(2, 3);
+unsigned long lastTime = 0;
 
 
 void setLeds(int start, int end, byte r, byte g, byte b) {
@@ -37,19 +34,37 @@ void setLeds(int start, int end, byte r, byte g, byte b) {
   FastLED.show();
 }
 
-void setLedsOff() {
-  for (int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = CRGB (0, 0, 0);
-  }
-  FastLED.show();
-  //FastLED.shut(); // Räcker kanske med att enbart köra denna istället 
-}
-
 void setAllLeds(int green, int yellow, int red) {
   int d1 = green, d2 = yellow + green, d3 = red + yellow + green;
   setLeds(0, d1, GREEN);
   setLeds(d1, d2, YELLOW);
   setLeds(d2, d3, RED);
+}
+
+// TODO: testa köra med dessa istället (kan ta bort defines för colors om det funkar)
+/*
+void setLeds(int start, int end, const struct CRGB &color) {
+  for (int i = start; i < end; i++) {
+    leds[i] = color;
+  }
+  FastLED.show();
+}
+
+void setAllLeds(int green, int yellow, int red) {
+  int d1 = green, d2 = yellow + green, d3 = red + yellow + green;
+  setLeds(0, d1, CRGB::Green);
+  setLeds(d1, d2, CRGB::Orange);
+  setLeds(d2, d3, CRGB::Red);
+}
+*/
+
+// TODO: testa om det funkar att bara köra FastLED.clear() istället för att sätta alla till 0, 0, 0
+void setLedsOff() {
+  //for (int i = 0; i < NUM_LEDS; i++) {
+  //  leds[i] = CRGB (0, 0, 0);
+  //}
+  FastLED.clear();
+  FastLED.show();
 }
 
 void printDebugInfo() {
@@ -75,20 +90,23 @@ void loop() {
     Serial.println("timerOn reset");
   }
 
-  // calculate delta time since last iteration
-  int timeNow = millis();
-  int dt = timeNow - lastTime;
+  // Calculate delta time since last iteration
+  unsigned long timeNow = millis();
+  unsigned long dt = timeNow - lastTime;
   lastTime = timeNow;
 
-  if(timerOn > 0) {
-    ledBrightness = map(timerOn, 0, TIME_ON, 0, 255);
-    setAllLeds(activityHigh, activityMed, activityLow);
+  if(timerOn >= 0) {
+    //ledBrightness = map(timerOn, 0, TIME_ON, 0, 255);
+    ledBrightness = timerOn >= TIME_ON / 2 ? 255 : map(timerOn, 0, TIME_ON / 2, 0, 255);
     FastLED.setBrightness(ledBrightness);
-    timerOn -= dt;
+    setAllLeds(activityHigh, activityMed, activityLow);
+
+    timerOn -= (int) dt;
+  
   } else {
     setLedsOff();
   }
 
+  printDebugInfo();
   delay(50);
-
 }
