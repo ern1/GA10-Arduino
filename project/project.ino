@@ -164,7 +164,7 @@ void loop() {
   sensorReading = analogRead(PIEZO_PIN);
   if (sensorReading >= PIEZO_THRESHOLD) {
     //timerOn = TIME_ON;
-    startPulse(PULSE_SHORT);
+    setPulse(PULSE_SHORT);
     Serial.println("tap");
   }
 
