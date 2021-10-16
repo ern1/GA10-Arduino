@@ -1,18 +1,15 @@
 #define FASTLED_INTERNAL
 #include <FastLED.h>
 
-
+/* LEDs side (ring) */
 #define NUM_LEDS 11
 #define LED_PIN 3
-#define NUM_LEDS_FRONT 4
-#define LED_PIN_FRONT 5
+
+// Activity
 #define MAX_LED_BRIGHTNESS 255
-
-#define PIEZO_PIN A0
-#define PIEZO_THRESHOLD 130
-
 #define TIME_ON 6000 // ms before leds turn off
 
+// Pulse/notification
 #define PULSE_OFF 0
 #define PULSE_SHORT 1
 #define PULSE_LONG 2
@@ -20,6 +17,16 @@
 #define TIME_PULSE_TOGGLE_LONG 800
 #define PULSE_ITER_SHORT 4
 #define PULSE_ITER_LONG 10
+#define MIN_PULSE_LED_BRIGHTNESS 16
+#define MAX_PULSE_LED_BRIGHTNESS 128
+
+/* LEDs front (for the tree) */
+#define NUM_LEDS_FRONT 4
+#define LED_PIN_FRONT 5
+
+/* Piezo button */
+#define PIEZO_PIN A0
+#define PIEZO_THRESHOLD 130
 
 
 // Define the array of leds
@@ -29,9 +36,8 @@ CRGB ledsFront[NUM_LEDS_FRONT];
 int activityHigh = 5, activityMed = 4, activityLow = 2;
 int ledBrightness = MAX_LED_BRIGHTNESS;
 
-// for pulse sequence
-bool pulse = false;
-int pulseType, ledOn = 1, timerToggle = 100, iterRemaining = 50;
+// For pulse sequence
+int pulseType = PULSE_OFF, pulseLedOn, timerToggle, iterRemaining;
 
 // switch and shut off timer
 int sensorReading = 0;
@@ -65,11 +71,11 @@ void setLedsOff() {
   FastLED.show();
 }
 
-void startPulse(int type) {
+void setPulse(int type) {
   if(type == PULSE_SHORT) {
-    ledOn = 1; timerToggle = TIME_PULSE_TOGGLE_SHORT; iterRemaining = PULSE_ITER_SHORT;
+    pulseLedOn = 1; timerToggle = TIME_PULSE_TOGGLE_SHORT; iterRemaining = PULSE_ITER_SHORT;
   } else if (type == PULSE_LONG) {
-    ledOn = 1; timerToggle = TIME_PULSE_TOGGLE_LONG; iterRemaining = PULSE_ITER_LONG;
+    pulseLedOn = 1; timerToggle = TIME_PULSE_TOGGLE_LONG; iterRemaining = PULSE_ITER_LONG;
   } else {
     pulseType = PULSE_OFF;
     return;
@@ -82,7 +88,7 @@ void pulseLeds() {
   const int timeToggle = pulseType == PULSE_SHORT ? TIME_PULSE_TOGGLE_SHORT : TIME_PULSE_TOGGLE_LONG;
 
   if (timerToggle <= 0) {
-    ledOn *= -1;
+    pulseLedOn *= -1;
     timerToggle = timeToggle;
     iterRemaining -= 1;
   }
@@ -90,7 +96,11 @@ void pulseLeds() {
   if (iterRemaining <= 0)
     pulseType = PULSE_OFF;
 
-  FastLED.setBrightness(ledOn == 1 ? map(timerToggle, 0, timeToggle, 128, 16) : map(timerToggle, 0, timeToggle, 16, 128));
+  FastLED.setBrightness(pulseLedOn == 1
+                          ? map(timerToggle, 0, timeToggle,
+                                MAX_PULSE_LED_BRIGHTNESS, MIN_PULSE_LED_BRIGHTNESS)
+                          : map(timerToggle, 0, timeToggle,
+                                MIN_PULSE_LED_BRIGHTNESS, MAX_PULSE_LED_BRIGHTNESS));
   setLeds(0, NUM_LEDS, CRGB::Red);
   setLedsFront(CRGB::Black);
 
@@ -120,13 +130,13 @@ void serialEvent() {
         activityMed++; activityLow--;
         break;
       case 'o':
-        startPulse(PULSE_SHORT);
+        setPulse(PULSE_SHORT);
         break;
       case 'p':
-        startPulse(PULSE_LONG);
+        setPulse(PULSE_LONG);
         break;
       case 'l':
-        pulseType = PULSE_OFF;
+        setPulse(PULSE_OFF);
         break;
       case 't':
         timerOn = TIME_ON;
@@ -145,7 +155,7 @@ void setup() {
 }
 
 void loop() {
-  // Calculate delta time since last iteration
+  // Calculate delta time (dt) since last iteration
   unsigned long timeNow = millis();
   dt = timeNow - lastTime;
   lastTime = timeNow;
@@ -158,21 +168,22 @@ void loop() {
     Serial.println("tap");
   }
 
+  // Set LEDs
   if(pulseType != PULSE_OFF) {
     pulseLeds();
-  } else {
-    if(timerOn >= 0) {
-      ledBrightness = (timerOn >= TIME_ON / 3) ?
-          MAX_LED_BRIGHTNESS : map(timerOn, 0, TIME_ON / 3, 16, MAX_LED_BRIGHTNESS);
-      FastLED.setBrightness(ledBrightness);
-      setAllLeds(activityHigh, activityMed, activityLow);
+  } else if (timerOn >= 0) {
+    // If timer is below a certain threshold, gradually lower the brightness
+    ledBrightness = (timerOn >= TIME_ON / 3)
+                      ? MAX_LED_BRIGHTNESS
+                      : map(timerOn, 0, TIME_ON / 3, 16, MAX_LED_BRIGHTNESS);
 
-      timerOn -= (int) dt;
-    
-    } else {
-      setLedsOff();
-    }
+    FastLED.setBrightness(ledBrightness);
+    setAllLeds(activityHigh, activityMed, activityLow);
+
+    timerOn -= (int) dt;
+  } else {
+    setLedsOff();
   }
 
-  delay(10);
+  delay(10); // TODO: remove?
 }

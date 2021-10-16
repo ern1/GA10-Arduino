@@ -15129,3 +15129,173 @@ Content-Length: 112
 {"method":"window/workDoneProgress/create","params":{"token":"backgroundIndexProgress"},"id":10,"jsonrpc":"2.0"}Content-Length: 893
 
 {"method":"textDocument/publishDiagnostics","params":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino","diagnostics":[{"range":{"start":{"line":58,"character":4},"end":{"line":58,"character":14}},"severity":1,"code":"expected_semi_for","source":"clang","message":"Expected ';' in 'for' statement specifier"},{"range":{"start":{"line":58,"character":38},"end":{"line":58,"character":39}},"severity":1,"code":"expected","source":"clang","message":"Expected ')'\n\nproject.ino.cpp:71:6: note: to match this '('"},{"range":{"start":{"line":57,"character":5},"end":{"line":57,"character":6}},"severity":3,"message":"To match this '('\n\nproject.ino.cpp:72:39: error: expected ')'"},{"range":{"start":{"line":55,"character":17},"end":{"line":55,"character":18}},"severity":3,"message":"To match this '{'\n\nproject.ino.cpp:74:16: error: expected '}'"}]},"jsonrpc":"2.0"}
+
+
+
+
+
+
+Started logging.
+
+<<<
+Content-Length: 3065
+
+{"jsonrpc":"2.0","id":0,"method":"initialize","params":{"processId":12312,"clientInfo":{"name":"vscode","version":"1.53.2"},"rootPath":"c:\\Users\\tommy\\Desktop\\dev\\GA10-Arduino\\project","rootUri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project","capabilities":{"workspace":{"applyEdit":true,"workspaceEdit":{"documentChanges":true,"resourceOperations":["create","rename","delete"],"failureHandling":"textOnlyTransactional"},"didChangeConfiguration":{"dynamicRegistration":true},"didChangeWatchedFiles":{"dynamicRegistration":true},"symbol":{"dynamicRegistration":true,"symbolKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]}},"executeCommand":{"dynamicRegistration":true},"configuration":true,"workspaceFolders":true},"textDocument":{"publishDiagnostics":{"relatedInformation":true,"versionSupport":false,"tagSupport":{"valueSet":[1,2]}},"synchronization":{"dynamicRegistration":true,"willSave":true,"willSaveWaitUntil":true,"didSave":true},"completion":{"dynamicRegistration":true,"contextSupport":true,"completionItem":{"snippetSupport":true,"commitCharactersSupport":true,"documentationFormat":["markdown","plaintext"],"deprecatedSupport":true,"preselectSupport":true,"tagSupport":{"valueSet":[1]}},"completionItemKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}},"hover":{"dynamicRegistration":true,"contentFormat":["markdown","plaintext"]},"signatureHelp":{"dynamicRegistration":true,"signatureInformation":{"documentationFormat":["markdown","plaintext"],"parameterInformation":{"labelOffsetSupport":true}},"contextSupport":true},"definition":{"dynamicRegistration":true,"linkSupport":true},"references":{"dynamicRegistration":true},"documentHighlight":{"dynamicRegistration":true},"documentSymbol":{"dynamicRegistration":true,"symbolKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]},"hierarchicalDocumentSymbolSupport":true},"codeAction":{"dynamicRegistration":true,"isPreferredSupport":true,"codeActionLiteralSupport":{"codeActionKind":{"valueSet":["","quickfix","refactor","refactor.extract","refactor.inline","refactor.rewrite","source","source.organizeImports"]}}},"codeLens":{"dynamicRegistration":true},"formatting":{"dynamicRegistration":true},"rangeFormatting":{"dynamicRegistration":true},"onTypeFormatting":{"dynamicRegistration":true},"rename":{"dynamicRegistration":true,"prepareSupport":true},"documentLink":{"dynamicRegistration":true,"tooltipSupport":true},"typeDefinition":{"dynamicRegistration":true,"linkSupport":true},"implementation":{"dynamicRegistration":true,"linkSupport":true},"colorProvider":{"dynamicRegistration":true},"foldingRange":{"dynamicRegistration":true,"rangeLimit":5000,"lineFoldingOnly":true},"declaration":{"dynamicRegistration":true,"linkSupport":true},"selectionRange":{"dynamicRegistration":true}},"window":{"workDoneProgress":true}},"initializationOptions":{},"trace":"off","workspaceFolders":[{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project","name":"project"}]}}
+>>>
+Content-Length: 598
+
+{"id":0,"result":{"capabilities":{"textDocumentSync":2,"hoverProvider":true,"completionProvider":{"triggerCharacters":[".","\u003e",":"]},"signatureHelpProvider":{"triggerCharacters":["(",","]},"definitionProvider":true,"documentHighlightProvider":true,"documentSymbolProvider":true,"workspaceSymbolProvider":true,"codeActionProvider":true,"documentFormattingProvider":true,"documentRangeFormattingProvider":true,"documentOnTypeFormattingProvider":{"firstTriggerCharacter":"\n"},"renameProvider":false,"executeCommandProvider":{"commands":["clangd.applyFix","clangd.applyTweak"]}}},"jsonrpc":"2.0"}
+<<<
+Content-Length: 52
+
+{"jsonrpc":"2.0","method":"initialized","params":{}}Content-Length: 4800
+
+{"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino","languageId":"cpp","version":1,"text":"#define FASTLED_INTERNAL\r\n#include <FastLED.h>\r\n\r\n\r\n#define NUM_LEDS 11\r\n#define LED_PIN 3\r\n#define NUM_LEDS_FRONT 4\r\n#define LED_PIN_FRONT 5\r\n#define MAX_LED_BRIGHTNESS 255\r\n\r\n#define PIEZO_PIN A0\r\n#define PIEZO_THRESHOLD 130\r\n\r\n#define TIME_ON 6000 // ms before leds turn off\r\n\r\n#define PULSE_OFF 0\r\n#define PULSE_SHORT 1\r\n#define PULSE_LONG 2\r\n#define TIME_PULSE_TOGGLE_SHORT 250\r\n#define TIME_PULSE_TOGGLE_LONG 800\r\n#define PULSE_ITER_SHORT 4\r\n#define PULSE_ITER_LONG 10\r\n\r\n\r\n// Define the array of leds\r\nCRGB leds[NUM_LEDS];\r\nCRGB ledsFront[NUM_LEDS_FRONT];\r\n\r\nint activityHigh = 5, activityMed = 4, activityLow = 2;\r\nint ledBrightness = MAX_LED_BRIGHTNESS;\r\n\r\n// for pulse sequence\r\nbool pulse = false;\r\nint pulseType, ledOn = 1, timerToggle = 100, iterRemaining = 50;\r\n\r\n// switch and shut off timer\r\nint sensorReading = 0;\r\nint timerOn = TIME_ON;\r\nunsigned long dt, lastTime = 0;\r\n\r\n\r\nvoid setLeds(int start, int end, const struct CRGB &color) {\r\n  for (int i = start; i < end; i++) {\r\n    leds[i] = color;\r\n  }\r\n  FastLED.show();\r\n}\r\n\r\nvoid setLedsFront(const struct CRGB &color) {\r\n  for (int i = 0; i < NUM_LEDS_FRONT; i++) {\r\n    ledsFront[i] = color;\r\n  }\r\n  FastLED.show();\r\n}\r\n\r\nvoid setAllLeds(int green, int yellow, int red) {\r\n  int d1 = green, d2 = yellow + green, d3 = red + yellow + green;\r\n  setLeds(0, d1, CRGB::Green);\r\n  setLeds(d1, d2, CRGB::Orange);\r\n  setLeds(d2, d3, CRGB::Red);\r\n}\r\n\r\nvoid setLedsOff() {\r\n  FastLED.clear();\r\n  FastLED.show();\r\n}\r\n\r\nvoid startPulse(int type) {\r\n  if(type == PULSE_SHORT) {\r\n    ledOn = 1; timerToggle = TIME_PULSE_TOGGLE_SHORT; iterRemaining = PULSE_ITER_SHORT;\r\n  } else if (type == PULSE_LONG) {\r\n    ledOn = 1; timerToggle = TIME_PULSE_TOGGLE_LONG; iterRemaining = PULSE_ITER_LONG;\r\n  } else {\r\n    pulseType = PULSE_OFF;\r\n    return;\r\n  }\r\n\r\n  pulseType = type;\r\n}\r\n\r\nvoid pulseLeds() {\r\n  const int timeToggle = pulseType == PULSE_SHORT ? TIME_PULSE_TOGGLE_SHORT : TIME_PULSE_TOGGLE_LONG;\r\n\r\n  if (timerToggle <= 0) {\r\n    ledOn *= -1;\r\n    timerToggle = timeToggle;\r\n    iterRemaining -= 1;\r\n  }\r\n\r\n  if (iterRemaining <= 0)\r\n    pulseType = PULSE_OFF;\r\n\r\n  FastLED.setBrightness(ledOn == 1 ? map(timerToggle, 0, timeToggle, 128, 16) : map(timerToggle, 0, timeToggle, 16, 128));\r\n  setLeds(0, NUM_LEDS, CRGB::Red);\r\n  setLedsFront(CRGB::Black);\r\n\r\n  timerToggle -= dt;\r\n}\r\n\r\nvoid serialEvent() {\r\n  while (Serial.available()) {\r\n    char inChar = (char)Serial.read();\r\n    Serial.println(inChar);\r\n\r\n    switch(inChar) {\r\n      case 'q':\r\n        if (activityHigh == 0) break;\r\n        activityHigh--; activityMed++;\r\n        break;\r\n      case 'w':\r\n        if (activityMed == 0) break;\r\n        activityHigh++; activityMed--;\r\n        break;\r\n      case 'e':\r\n        if (activityMed == 0) break;\r\n        activityLow++; activityMed--;\r\n        break;\r\n      case 'r':\r\n        if (activityLow == 0) break;\r\n        activityMed++; activityLow--;\r\n        break;\r\n      case 'o':\r\n        startPulse(PULSE_SHORT);\r\n        break;\r\n      case 'p':\r\n        startPulse(PULSE_LONG);\r\n        break;\r\n      case 'l':\r\n        pulseType = PULSE_OFF;\r\n        break;\r\n      case 't':\r\n        timerOn = TIME_ON;\r\n        break;\r\n    }\r\n  }\r\n}\r\n\r\nvoid setup() {\r\n  FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);\r\n  FastLED.addLeds<NEOPIXEL, LED_PIN_FRONT>(ledsFront, NUM_LEDS);\r\n  FastLED.setBrightness(ledBrightness);\r\n  setLedsFront(CRGB::Orange);\r\n\r\n  Serial.begin(9600);\r\n}\r\n\r\nvoid loop() {\r\n  // Calculate delta time since last iteration\r\n  unsigned long timeNow = millis();\r\n  dt = timeNow - lastTime;\r\n  lastTime = timeNow;\r\n\r\n  // Read value of piezo switch/sensor\r\n  sensorReading = analogRead(PIEZO_PIN);\r\n  if (sensorReading >= PIEZO_THRESHOLD) {\r\n    //timerOn = TIME_ON;\r\n    startPulse(PULSE_SHORT);\r\n    Serial.println(\"tap\");\r\n  }\r\n\r\n  if(pulseType != PULSE_OFF) {\r\n    pulseLeds();\r\n  } else {\r\n    if(timerOn >= 0) {\r\n      ledBrightness = (timerOn >= TIME_ON / 3) ?\r\n          MAX_LED_BRIGHTNESS : map(timerOn, 0, TIME_ON / 3, 16, MAX_LED_BRIGHTNESS);\r\n      FastLED.setBrightness(ledBrightness);\r\n      setAllLeds(activityHigh, activityMed, activityLow);\r\n\r\n      timerOn -= (int) dt;\r\n    \r\n    } else {\r\n      setLedsOff();\r\n    }\r\n  }\r\n\r\n  delay(10);\r\n}\r\n"}}}Content-Length: 272
+
+{"jsonrpc":"2.0","id":1,"method":"textDocument/codeAction","params":{"textDocument":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino"},"range":{"start":{"line":26,"character":22},"end":{"line":26,"character":22}},"context":{"diagnostics":[]}}}Content-Length: 268
+
+{"jsonrpc":"2.0","id":2,"method":"textDocument/codeAction","params":{"textDocument":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino"},"range":{"start":{"line":0,"character":0},"end":{"line":0,"character":0}},"context":{"diagnostics":[]}}}Content-Length: 169
+
+{"jsonrpc":"2.0","id":3,"method":"textDocument/documentSymbol","params":{"textDocument":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino"}}}Content-Length: 62
+
+{"jsonrpc":"2.0","method":"$/cancelRequest","params":{"id":3}}Content-Length: 169
+
+{"jsonrpc":"2.0","id":4,"method":"textDocument/documentSymbol","params":{"textDocument":{"uri":"file:///c%3A/Users/tommy/Desktop/dev/GA10-Arduino/project/project.ino"}}}
+>>>
+Content-Length: 111
+
+{"method":"window/workDoneProgress/create","params":{"token":"backgroundIndexProgress"},"id":0,"jsonrpc":"2.0"}Content-Length: 406
+
+{"id":1,"result":[{"title":"Expand macro 'NUM_LEDS_FRONT'","kind":"refactor","command":{"title":"Expand macro 'NUM_LEDS_FRONT'","command":"clangd.applyTweak","arguments":[{"tweakID":"ExpandMacro","file":"file:///C:/Users/tommy/AppData/Local/Temp/arduino-language-server235023751/sketch/project.ino.cpp","selection":{"start":{"line":28,"character":22},"end":{"line":28,"character":22}}}]}}],"jsonrpc":"2.0"}Content-Length: 36
+
+{"id":2,"result":[],"jsonrpc":"2.0"}Content-Length: 4691
+
+{"id":3,"result":[{"name":"leds","kind":13,"range":{"start":{"line":25,"character":0},"end":{"line":25,"character":19}},"selectionRange":{"start":{"line":25,"character":5},"end":{"line":25,"character":9}}},{"name":"ledsFront","kind":13,"range":{"start":{"line":26,"character":0},"end":{"line":26,"character":30}},"selectionRange":{"start":{"line":26,"character":5},"end":{"line":26,"character":14}}},{"name":"activityHigh","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":20}},"selectionRange":{"start":{"line":28,"character":4},"end":{"line":28,"character":16}}},{"name":"activityMed","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":37}},"selectionRange":{"start":{"line":28,"character":22},"end":{"line":28,"character":33}}},{"name":"activityLow","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":54}},"selectionRange":{"start":{"line":28,"character":39},"end":{"line":28,"character":50}}},{"name":"ledBrightness","kind":13,"range":{"start":{"line":29,"character":0},"end":{"line":29,"character":38}},"selectionRange":{"start":{"line":29,"character":4},"end":{"line":29,"character":17}}},{"name":"pulse","kind":13,"range":{"start":{"line":32,"character":0},"end":{"line":32,"character":18}},"selectionRange":{"start":{"line":32,"character":5},"end":{"line":32,"character":10}}},{"name":"pulseType","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":13}},"selectionRange":{"start":{"line":33,"character":4},"end":{"line":33,"character":13}}},{"name":"ledOn","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":24}},"selectionRange":{"start":{"line":33,"character":15},"end":{"line":33,"character":20}}},{"name":"timerToggle","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":43}},"selectionRange":{"start":{"line":33,"character":26},"end":{"line":33,"character":37}}},{"name":"iterRemaining","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":63}},"selectionRange":{"start":{"line":33,"character":45},"end":{"line":33,"character":58}}},{"name":"sensorReading","kind":13,"range":{"start":{"line":36,"character":0},"end":{"line":36,"character":21}},"selectionRange":{"start":{"line":36,"character":4},"end":{"line":36,"character":17}}},{"name":"timerOn","kind":13,"range":{"start":{"line":37,"character":0},"end":{"line":37,"character":21}},"selectionRange":{"start":{"line":37,"character":4},"end":{"line":37,"character":11}}},{"name":"dt","kind":13,"range":{"start":{"line":38,"character":0},"end":{"line":38,"character":16}},"selectionRange":{"start":{"line":38,"character":14},"end":{"line":38,"character":16}}},{"name":"lastTime","kind":13,"range":{"start":{"line":38,"character":0},"end":{"line":38,"character":30}},"selectionRange":{"start":{"line":38,"character":18},"end":{"line":38,"character":26}}},{"name":"setLeds","kind":12,"range":{"start":{"line":41,"character":0},"end":{"line":46,"character":1}},"selectionRange":{"start":{"line":41,"character":5},"end":{"line":41,"character":12}}},{"name":"setLedsFront","kind":12,"range":{"start":{"line":48,"character":0},"end":{"line":53,"character":1}},"selectionRange":{"start":{"line":48,"character":5},"end":{"line":48,"character":17}}},{"name":"setAllLeds","kind":12,"range":{"start":{"line":55,"character":0},"end":{"line":60,"character":1}},"selectionRange":{"start":{"line":55,"character":5},"end":{"line":55,"character":15}}},{"name":"setLedsOff","kind":12,"range":{"start":{"line":62,"character":0},"end":{"line":65,"character":1}},"selectionRange":{"start":{"line":62,"character":5},"end":{"line":62,"character":15}}},{"name":"startPulse","kind":12,"range":{"start":{"line":67,"character":0},"end":{"line":78,"character":1}},"selectionRange":{"start":{"line":67,"character":5},"end":{"line":67,"character":15}}},{"name":"pulseLeds","kind":12,"range":{"start":{"line":80,"character":0},"end":{"line":97,"character":1}},"selectionRange":{"start":{"line":80,"character":5},"end":{"line":80,"character":14}}},{"name":"serialEvent","kind":12,"range":{"start":{"line":99,"character":0},"end":{"line":135,"character":1}},"selectionRange":{"start":{"line":99,"character":5},"end":{"line":99,"character":16}}},{"name":"setup","kind":12,"range":{"start":{"line":137,"character":0},"end":{"line":144,"character":1}},"selectionRange":{"start":{"line":137,"character":5},"end":{"line":137,"character":10}}},{"name":"loop","kind":12,"range":{"start":{"line":146,"character":0},"end":{"line":177,"character":1}},"selectionRange":{"start":{"line":146,"character":5},"end":{"line":146,"character":9}}}],"jsonrpc":"2.0"}Content-Length: 4691
+
+{"id":4,"result":[{"name":"leds","kind":13,"range":{"start":{"line":25,"character":0},"end":{"line":25,"character":19}},"selectionRange":{"start":{"line":25,"character":5},"end":{"line":25,"character":9}}},{"name":"ledsFront","kind":13,"range":{"start":{"line":26,"character":0},"end":{"line":26,"character":30}},"selectionRange":{"start":{"line":26,"character":5},"end":{"line":26,"character":14}}},{"name":"activityHigh","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":20}},"selectionRange":{"start":{"line":28,"character":4},"end":{"line":28,"character":16}}},{"name":"activityMed","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":37}},"selectionRange":{"start":{"line":28,"character":22},"end":{"line":28,"character":33}}},{"name":"activityLow","kind":13,"range":{"start":{"line":28,"character":0},"end":{"line":28,"character":54}},"selectionRange":{"start":{"line":28,"character":39},"end":{"line":28,"character":50}}},{"name":"ledBrightness","kind":13,"range":{"start":{"line":29,"character":0},"end":{"line":29,"character":38}},"selectionRange":{"start":{"line":29,"character":4},"end":{"line":29,"character":17}}},{"name":"pulse","kind":13,"range":{"start":{"line":32,"character":0},"end":{"line":32,"character":18}},"selectionRange":{"start":{"line":32,"character":5},"end":{"line":32,"character":10}}},{"name":"pulseType","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":13}},"selectionRange":{"start":{"line":33,"character":4},"end":{"line":33,"character":13}}},{"name":"ledOn","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":24}},"selectionRange":{"start":{"line":33,"character":15},"end":{"line":33,"character":20}}},{"name":"timerToggle","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":43}},"selectionRange":{"start":{"line":33,"character":26},"end":{"line":33,"character":37}}},{"name":"iterRemaining","kind":13,"range":{"start":{"line":33,"character":0},"end":{"line":33,"character":63}},"selectionRange":{"start":{"line":33,"character":45},"end":{"line":33,"character":58}}},{"name":"sensorReading","kind":13,"range":{"start":{"line":36,"character":0},"end":{"line":36,"character":21}},"selectionRange":{"start":{"line":36,"character":4},"end":{"line":36,"character":17}}},{"name":"timerOn","kind":13,"range":{"start":{"line":37,"character":0},"end":{"line":37,"character":21}},"selectionRange":{"start":{"line":37,"character":4},"end":{"line":37,"character":11}}},{"name":"dt","kind":13,"range":{"start":{"line":38,"character":0},"end":{"line":38,"character":16}},"selectionRange":{"start":{"line":38,"character":14},"end":{"line":38,"character":16}}},{"name":"lastTime","kind":13,"range":{"start":{"line":38,"character":0},"end":{"line":38,"character":30}},"selectionRange":{"start":{"line":38,"character":18},"end":{"line":38,"character":26}}},{"name":"setLeds","kind":12,"range":{"start":{"line":41,"character":0},"end":{"line":46,"character":1}},"selectionRange":{"start":{"line":41,"character":5},"end":{"line":41,"character":12}}},{"name":"setLedsFront","kind":12,"range":{"start":{"line":48,"character":0},"end":{"line":53,"character":1}},"selectionRange":{"start":{"line":48,"character":5},"end":{"line":48,"character":17}}},{"name":"setAllLeds","kind":12,"range":{"start":{"line":55,"character":0},"end":{"line":60,"character":1}},"selectionRange":{"start":{"line":55,"character":5},"end":{"line":55,"character":15}}},{"name":"setLedsOff","kind":12,"range":{"start":{"line":62,"character":0},"end":{"line":65,"character":1}},"selectionRange":{"start":{"line":62,"character":5},"end":{"line":62,"character":15}}},{"name":"startPulse","kind":12,"range":{"start":{"line":67,"character":0},"end":{"line":78,"character":1}},"selectionRange":{"start":{"line":67,"character":5},"end":{"line":67,"character":15}}},{"name":"pulseLeds","kind":12,"range":{"start":{"line":80,"character":0},"end":{"line":97,"character":1}},"selectionRange":{"start":{"line":80,"character":5},"end":{"line":80,"character":14}}},{"name":"serialEvent","kind":12,"range":{"start":{"line":99,"character":0},"end":{"line":135,"character":1}},"selectionRange":{"start":{"line":99,"character":5},"end":{"line":99,"character":16}}},{"name":"setup","kind":12,"range":{"start":{"line":137,"character":0},"end":{"line":144,"character":1}},"selectionRange":{"start":{"line":137,"character":5},"end":{"line":137,"character":10}}},{"name":"loop","kind":12,"range":{"start":{"line":146,"character":0},"end":{"line":177,"character":1}},"selectionRange":{"start":{"line":146,"character":5},"end":{"line":146,"character":9}}}],"jsonrpc":"2.0"}
+<<<
+Content-Length: 38
+
+{"jsonrpc":"2.0","id":0,"result":null}
+>>>
+Content-Length: 143
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"title":"indexing","percentage":0,"kind":"begin"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"2/38","percentage":5.2631578947368425,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"3/38","percentage":7.894736842105263,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"4/38","percentage":10.526315789473685,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"4/38","percentage":10.526315789473685,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"5/38","percentage":13.157894736842104,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"5/38","percentage":13.157894736842104,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"6/38","percentage":15.789473684210526,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"7/38","percentage":18.42105263157895,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"7/38","percentage":18.42105263157895,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"8/38","percentage":21.05263157894737,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"8/38","percentage":21.05263157894737,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"9/38","percentage":23.68421052631579,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"9/38","percentage":23.68421052631579,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"10/38","percentage":26.31578947368421,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"10/38","percentage":26.31578947368421,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"11/38","percentage":28.94736842105263,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"12/38","percentage":31.57894736842105,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"13/38","percentage":34.21052631578947,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"14/38","percentage":36.8421052631579,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"14/38","percentage":36.8421052631579,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 160
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"15/38","percentage":39.473684210526315,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"16/38","percentage":42.10526315789474,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"17/38","percentage":44.73684210526316,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"18/38","percentage":47.36842105263158,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 144
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"19/38","percentage":50,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"20/38","percentage":52.63157894736842,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"21/38","percentage":55.26315789473684,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"22/38","percentage":57.89473684210526,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"22/38","percentage":57.89473684210526,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 160
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"23/38","percentage":60.526315789473685,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"24/38","percentage":63.1578947368421,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"24/38","percentage":63.1578947368421,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"25/38","percentage":65.78947368421052,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"26/38","percentage":68.42105263157895,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"27/38","percentage":71.05263157894737,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"27/38","percentage":71.05263157894737,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"28/38","percentage":73.6842105263158,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"28/38","percentage":73.6842105263158,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"29/38","percentage":76.3157894736842,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 158
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"29/38","percentage":76.3157894736842,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"30/38","percentage":78.94736842105263,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"30/38","percentage":78.94736842105263,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"31/38","percentage":81.57894736842105,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"31/38","percentage":81.57894736842105,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"32/38","percentage":84.21052631578948,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"32/38","percentage":84.21052631578948,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"33/38","percentage":86.84210526315789,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"33/38","percentage":86.84210526315789,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"34/38","percentage":89.47368421052632,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"35/38","percentage":92.10526315789474,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"36/38","percentage":94.73684210526316,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 159
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"message":"37/38","percentage":97.36842105263158,"kind":"report"}},"jsonrpc":"2.0"}Content-Length: 107
+
+{"method":"$/progress","params":{"token":"backgroundIndexProgress","value":{"kind":"end"}},"jsonrpc":"2.0"}
+<<<
+Content-Length: 58
+
+{"jsonrpc":"2.0","id":5,"method":"shutdown","params":null}
+>>>
+Content-Length: 38
+
+{"id":5,"result":null,"jsonrpc":"2.0"}
+<<<
+Content-Length: 47
+
+{"jsonrpc":"2.0","method":"exit","params":null}
