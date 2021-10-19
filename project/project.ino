@@ -26,7 +26,7 @@
 
 /* Piezo button */
 #define PIEZO_PIN A0
-#define PIEZO_THRESHOLD 130
+#define PIEZO_THRESHOLD 1000
 
 
 // Define the array of leds
@@ -129,17 +129,26 @@ void serialEvent() {
         if (activityLow == 0) break;
         activityMed++; activityLow--;
         break;
-      case 'o':
+      case 'a':
         setPulse(PULSE_SHORT);
         break;
-      case 'p':
+      case 's':
         setPulse(PULSE_LONG);
         break;
-      case 'l':
+      case 'd':
         setPulse(PULSE_OFF);
         break;
-      case 't':
+      case 'z':
         timerOn = TIME_ON;
+        setLedsFront(CRGB::Green);
+        break;
+      case 'x':
+        timerOn = TIME_ON;
+        setLedsFront(CRGB::Orange);
+        break;
+      case 'c':
+        timerOn = TIME_ON;
+        setLedsFront(CRGB::Red);
         break;
     }
   }
